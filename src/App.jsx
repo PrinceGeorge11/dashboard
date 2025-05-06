@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Use Routes instead of Switch
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import DashboardCards from './components/DashboardCards';
@@ -23,24 +23,24 @@ const App = () => {
         <Sidebar />
         <div className="flex-1 flex flex-col">
           <Navbar />
-          <Switch>
+          <Routes> {/* Replace Switch with Routes */}
             {/* Dashboard */}
-            <Route exact path="/" component={DashboardCards} />
+            <Route exact path="/" element={<DashboardCards />} />
 
             {/* Project Routes */}
-            <Route exact path="/projects" component={ProjectsList} />
-            <Route path="/projects/create" component={CreateProject} />
-            <Route path="/projects/edit/:id" component={EditProject} />
+            <Route exact path="/projects" element={<ProjectsList />} />
+            <Route path="/projects/create" element={<CreateProject />} />
+            <Route path="/projects/edit/:id" element={<EditProject />} />
 
             {/* Task Routes */}
-            <Route exact path="/tasks" component={TasksList} />
-            <Route path="/tasks/create" component={CreateTask} />
-            <Route path="/tasks/edit/:id" component={EditTask} />
+            <Route exact path="/tasks" element={<TasksList />} />
+            <Route path="/tasks/create" element={<CreateTask />} />
+            <Route path="/tasks/edit/:id" element={<EditTask />} />
 
             {/* Other Routes */}
-            <Route path="/calendar" component={Calendar} />
-            <Route path="/recent" component={RecentProjects} />
-          </Switch>
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/recent" element={<RecentProjects />} />
+          </Routes>
         </div>
       </div>
     </Router>

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';  // useNavigate instead of useHistory
 
 const EditTask = () => {
   const { id } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();  // Initialize useNavigate hook
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [project, setProject] = useState('');
 
+  // Fetch task details using id from the URL
   useEffect(() => {
     axios.get(`https://dashboard-api-1.onrender.com/api/tasks/${id}`)
       .then((response) => {
@@ -21,13 +22,14 @@ const EditTask = () => {
       });
   }, [id]);
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios.put(`https://dashboard-api-1.onrender.com/api/tasks/${id}`, { name, description, project })
       .then((response) => {
         alert('Task updated successfully!');
-        history.push('/tasks');
+        navigate('/tasks');  // Use navigate instead of history.push
       })
       .catch((error) => {
         console.error("There was an error updating the task!", error);

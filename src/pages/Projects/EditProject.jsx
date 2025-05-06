@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';  // useNavigate instead of useHistory
 
 const EditProject = () => {
   const { id } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();  // Initialize useNavigate
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -25,7 +25,7 @@ const EditProject = () => {
     axios.put(`https://dashboard-api-1.onrender.com/api/projects/${id}`, { name, description })
       .then((response) => {
         alert('Project updated successfully!');
-        history.push('/projects');
+        navigate('/projects');  // Use navigate instead of history.push
       })
       .catch((error) => {
         console.error("There was an error updating the project!", error);
