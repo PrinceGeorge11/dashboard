@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DashboardCards = () => {
+const DashboardCard = () => {
   return (
     <div className="grid grid-cols-4 gap-4 p-4">
       <div className="bg-blue-500 shadow-lg rounded-lg p-6 text-white">
@@ -23,4 +23,4 @@ const DashboardCards = () => {
   );
 };
 
-export default DashboardCards;
+export default DashboardCard;

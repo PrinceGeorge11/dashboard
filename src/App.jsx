@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Use Routes instead of Switch
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import DashboardCards from './components/DashboardCards';
+import DashboardCard from './components/DashboardCards';
 import RecentProjects from './components/RecentProjects';
 import Calendar from './components/Calendar';
 
@@ -25,7 +25,7 @@ const App = () => {
           <Navbar />
           <Routes> {/* Replace Switch with Routes */}
             {/* Dashboard */}
-            <Route exact path="/" element={<DashboardCards />} />
+            <Route exact path="/" element={<DashboardCard />} />
 
             {/* Project Routes */}
             <Route exact path="/projects" element={<ProjectsList />} />
